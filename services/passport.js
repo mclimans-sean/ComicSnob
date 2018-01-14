@@ -1,6 +1,9 @@
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
+const mongoose = require('mongoose');
 const keys = require('../config/keys');
+
+const User = mongoose.model('users');
 
 passport.use(
   new TwitterStrategy(
@@ -10,9 +13,7 @@ passport.use(
       callbackURL: 'http://127.0.0.1:5000/auth/twitter/callback'
     },
     (token, tokenSecret, profile, done) => {
-      console.log('token: ', token);
-      console.log('tokenSecret: ', tokenSecret);
-      console.log('profile: ', profile);
+      new User({ twitterId: profile.id }).save();
     }
   )
 );
