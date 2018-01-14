@@ -15,8 +15,11 @@ passport.use(
     (token, tokenSecret, profile, done) => {
       User.findOne({ twitterId: profile.id }).then(existingUser => {
         if (existingUser) {
+          done(null, existingUser);
         } else {
-          new User({ twitterId: profile.id }).save();
+          new User({ twitterId: profile.id })
+            .save()
+            .then(user => done(null, user));
         }
       });
     }
