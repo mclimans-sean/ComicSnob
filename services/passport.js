@@ -10,10 +10,15 @@ passport.use(
     {
       consumerKey: keys.TWITTER_CONSUMER_KEY,
       consumerSecret: keys.TWITTER_CONSUMER_SECRET,
-      callbackURL: 'http://127.0.0.1:5000/auth/twitter/callback'
+      callbackURL: '/auth/twitter/callback'
     },
     (token, tokenSecret, profile, done) => {
-      new User({ twitterId: profile.id }).save();
+      User.findOne({ twitterId: profile.id }).then(existingUser => {
+        if (existingUser) {
+        } else {
+          new User({ twitterId: profile.id }).save();
+        }
+      });
     }
   )
 );
