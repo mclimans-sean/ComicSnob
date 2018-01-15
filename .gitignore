@@ -61,6 +61,7 @@ typings/
 .next
 
 # Twitter Keys
-keys.js
+dev.js
+
 
 twitter-profile
