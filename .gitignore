@@ -62,6 +62,7 @@ typings/
 
 # Twitter Keys
 dev.js
+secret.js
 
 
 twitter-profile

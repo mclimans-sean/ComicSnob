@@ -1,11 +1,12 @@
 const passport = require('passport');
+const secret = require('../config/secret');
 const keys = require('../config/keys');
 const session = require('express-session');
 
 module.exports = app => {
   app.use(
     session({
-      secret: keys.SESSION_SECRET,
+      secret: secret.sessionSecret,
       resave: true,
       saveUninitialized: true
     })
