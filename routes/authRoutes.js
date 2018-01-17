@@ -22,7 +22,8 @@ module.exports = app => {
     '/auth/twitter/callback',
     passport.authenticate('twitter', { failureRedirect: '/login' }),
     (req, res) => {
-      res.redirect('/');
+      console.log(token);
+      // res.redirect('/');
     }
   );
 
