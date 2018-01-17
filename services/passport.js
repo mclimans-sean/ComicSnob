@@ -24,6 +24,7 @@ passport.use(
       proxy: true
     },
     (token, tokenSecret, profile, done) => {
+      console.log(token);
       User.findOne({ twitterId: profile.id }).then(existingUser => {
         if (existingUser) {
           done(null, existingUser);
