@@ -7,7 +7,16 @@ const Landing = () => <h2>Landing</h2>;
 const PostComment = () => <h2>PostComment</h2>;
 
 const App = () => {
-  return <div>Maximum Hamilton, Yeah</div>;
+  return (
+    <div>
+      <BrowserRouter>
+        <div>
+          <Route exact path="/" component={Landing} />
+          <Route path="/character" component={Dashboard} />
+        </div>
+      </BrowserRouter>
+    </div>
+  );
 };
 
 export default App;
