@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Jumbotron } from 'react-bootstrap';
-// import FontAwesome from 'react-fontawesome';
-// import 'font-awesome/css/font-awesome.css';
 
 class Header extends Component {
   render() {
