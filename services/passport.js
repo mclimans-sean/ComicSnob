@@ -23,14 +23,27 @@ passport.use(
       callbackURL: '/auth/twitter/callback',
       proxy: true
     },
-    async (token, tokenSecret, profile, done) => {
-      const existingUser = await User.findOne({ twitterId: profile.id });
+    function(token, tokenSecret, profile, done) {
+      var searchQuery = {
+        twitterId: profile.id
+      };
 
-      if (existingUser) {
-        return done(null, existingUser);
-      }
-      const user = await new User({ twitterId: profile.id }).save();
-      done(null, user);
+      var updates = {
+        name: profile.username,
+        image: profile.photos[0].value
+      };
+
+      var options = {
+        upsert: true
+      };
+
+      User.findOneAndUpdate(searchQuery, updates, options, function(err, user) {
+        if (err) {
+          return done(err);
+        } else {
+          return done(null, user);
+        }
+      });
     }
   )
 );
