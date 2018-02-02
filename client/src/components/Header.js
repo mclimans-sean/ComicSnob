@@ -16,7 +16,12 @@ class Header extends Component {
           </a>
         );
       default:
-        return <div>{this.props.auth.twitterId.toString()} Logged in</div>;
+        return (
+          <div>
+            <img src={this.props.auth.image} alt="user profile pic" />
+            {this.props.auth.name}
+          </div>
+        );
     }
   }
 
