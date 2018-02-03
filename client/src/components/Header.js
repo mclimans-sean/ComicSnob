@@ -10,7 +10,7 @@ class Header extends Component {
         return 'Still deciding';
       case false:
         return (
-          <a className="btn btn-block btn-social btn-twitter">
+          <a href="/auth/twitter" className="btn btn-block btn-social btn-twitter">
             <span className="fa fa-twitter" />
             Sign in with Twitter
           </a>
