@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Jumbotron } from 'react-bootstrap';
+import { Jumbotron, Button } from 'react-bootstrap';
 
 class Header extends Component {
   renderContent() {
@@ -20,6 +20,7 @@ class Header extends Component {
           <div>
             <img src={this.props.auth.image} alt="user profile pic" />
             {this.props.auth.name}
+            <Button bsStyle="danger" href="/api/logout">Logout</Button>
           </div>
         );
     }
